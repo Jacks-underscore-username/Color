@@ -1,0 +1,18 @@
+{
+  "name": "basic-color",
+  "version": "1.0.0",
+  "description": "A package for reducing the boring color math from every project",
+  "main": "Color.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "jacks-underscore-username",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jacks-underscore-username/Color.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Jacks-underscore-username/Color/issues"
+  }
+}
