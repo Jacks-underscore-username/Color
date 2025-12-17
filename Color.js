@@ -157,17 +157,51 @@ class Color {
   }
 
   /**
-   * @param {string} [hex]
+   * @param {string} hex
+   * @returns {Color}
    */
-  constructor(hex) {
-    if (hex) {
-      this._hex = hex[0] === '#' ? hex : `#${hex}`
-      this.update('hex')
-    }
+  static fromHex(hex) {
+    const color = new Color()
+    color._hex = hex[0] === '#' ? hex : `#${hex}`
+    color.update('hex')
+    return color
   }
 
   /**
-   *
+   * @param {number} red
+   * @param {number} green
+   * @param {number} blue
+   * @param {number} [alpha]
+   * @returns {Color}
+   */
+  static fromRgb(red, green, blue, alpha) {
+    const color = new Color()
+    color._r = red
+    color._g = green
+    color._b = blue
+    if (alpha !== undefined) color._a = alpha
+    color.update('rgb')
+    return color
+  }
+
+  /**
+   * @param {number} hue
+   * @param {number} saturation
+   * @param {number} lightness
+   * @param {number} [alpha]
+   * @returns {Color}
+   */
+  static fromHsv(hue, saturation, lightness, alpha) {
+    const color = new Color()
+    color._h = hue
+    color._s = saturation
+    color._l = lightness
+    if (alpha !== undefined) color._a = alpha
+    color.update('hsl')
+    return color
+  }
+
+  /**
    * @param {"rgb" | "hsl" | "alpha" | "hex"} mode
    */
   update(mode) {
@@ -327,13 +361,13 @@ class Color {
     this.update('rgb')
   }
   set rgb(value) {
-    // @ts-ignore
+    // @ts-expect-error
     this._r = value.r ?? value.red
-    // @ts-ignore
+    // @ts-expect-error
     this._g = value.g ?? value.green
-    // @ts-ignore
+    // @ts-expect-error
     this._b = value.b ?? value.blue
-    // @ts-ignore
+    // @ts-expect-error
     this._a = value.a ?? value.alpha ?? this._a
     this.update('rgb')
   }
@@ -370,13 +404,13 @@ class Color {
     this.update('hsl')
   }
   set hsl(value) {
-    // @ts-ignore
+    // @ts-expect-error
     this._h = value.h ?? value.hue
-    // @ts-ignore
+    // @ts-expect-error
     this._s = value.s ?? value.saturation
-    // @ts-ignore
+    // @ts-expect-error
     this._l = value.l ?? value.lightness
-    // @ts-ignore
+    // @ts-expect-error
     this._a = value.a ?? value.alpha ?? this._a
     this.update('hsl')
   }
